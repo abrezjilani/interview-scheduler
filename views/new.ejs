@@ -1,0 +1,115 @@
+<%- include('partials/header2') %>
+
+<div class="container">
+  <header
+    style="background-color: rgba(0, 0, 0, 0.6); color: white"
+    class="text-center rounded-pill p-4 m-4"
+  >
+    <div class="container">
+      <h1>Available participants</h1>
+      <p>Hey, Admin! Here is the pool of participants you can choose from!</p>
+    </div>
+  </header>
+  <form action="/interviews" method="post" id="sectionForm">
+    <h2
+      class="p-1 mt-3"
+      style="color: white; background-color: rgba(0, 0, 0, 0.5)"
+    >
+      <span class="text-white-50">Select from the </span>Applicants
+    </h2>
+    <div class="row row-cols-md-2 row-cols-lg-4">
+      <% pool.applicants.forEach((applicant) => { %>
+      <div class="col mb-4">
+        <div class="card h-100">
+          <img
+            src="<%= applicant.image %>"
+            class="p-2 pb-3 border-bottom rounded card-img-top img-fluid"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= applicant.name%></h5>
+            <input
+              type="checkbox"
+              name="applicant[name]"
+              id="applicantMember"
+              value="<%= applicant.name %>"
+            />
+            <label for="applicantMember">Select this person</label>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <h2
+      class="p-1 mt-3"
+      style="color: white; background-color: rgba(0, 0, 0, 0.5)"
+    >
+      <span class="text-white-50">Select from your </span>HR Team
+    </h2>
+    <div class="row row-cols-md-2 row-cols-lg-4">
+      <% pool.team.forEach((member) => { %>
+      <div class="col mb-4">
+        <div class="card h-100">
+          <img
+            src="<%= member.image %>"
+            class="p-2 pb-3 border-bottom rounded card-img-top img-fluid"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= member.name%></h5>
+            <input
+              type="checkbox"
+              name="team[name]"
+              id="teamMember"
+              value="<%= member.name %>"
+            />
+            <label for="teamMember">Select this person</label>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <div>
+      <h2
+        class="p-1 mt-3"
+        style="color: white; background-color: rgba(0, 0, 0, 0.5)"
+      >
+        <span class="text-white-50">Choose the </span>Start and End Time for the
+        Interview
+      </h2>
+      <input
+        type="time"
+        id="start_time"
+        name="start_time"
+        min="09:00"
+        max="18:00"
+        required
+        class="border border-rounded m-1"
+      />
+      <input
+        type="time"
+        id="end_time"
+        name="end_time"
+        min="09:00"
+        max="18:00"
+        required
+        class="border border-rounded m-1"
+      />
+      <small
+        class="ml-2 p-2"
+        style="background-color: rgba(0, 0, 0, 0.5); color: white"
+        >Office hours are from 9:00 to 18:00</small
+      >
+      <button
+        style="width: 100%"
+        type="submit"
+        class="btn btn-success mb-5 mt-3"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+<script src="/public/script.js"></script>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,21 @@
+html,
+body {
+  height: 100%;
+  background-image: url(bg-1.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+#navBar {
+  transition: all 0.5s;
+}
+
+#navBar:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#navHeading {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
